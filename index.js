@@ -5,6 +5,8 @@ const server = express();
 const mongoose = require('mongoose');
 const cors = require('cors')
 
+const data = require('./routes/data')
+
 
 // db Connection
 main().catch((err) => console.log(err));
@@ -17,6 +19,7 @@ async function main() {
 server.use(cors())
 server.use(express.json());
 server.use(morgan('dev'));
+server.use('/data',data.routers);
 
 // server start
 server.listen(process.env.PORT,()=>{
